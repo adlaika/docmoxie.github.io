@@ -1,9 +1,19 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
-const App = () => (
+import Blog from './Blog'
+
+const App = ({ blog }) => (
   <div>
-    hello world
+    <Blog posts={blog.posts}/>
   </div>
 )
 
-export default App
+App.propTypes = {
+  blog: PropTypes.object.isRequired
+}
+
+export default connect(
+  state => ({ blog: state.blog })
+)(App)
